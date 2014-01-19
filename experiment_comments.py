@@ -1094,7 +1094,7 @@ class Experiment (object):
             self.initiate_files(stop_TS_optimization=stop_beg_TS_optimization, stop_R_optimization=stop_beg_R_optimization, \
                            stop_frequency=stop_beg_freq, increment=increment, rerun=rerun)
         print self.current_distances
-        ## I believe the args works correctly, but might warrent test cases
+        ## I believe the args works correctly, but warrents test cases
         final_dist = fmin(self.run_next_steps, self.current_distances, \
                           args=(stop_iteration_optimization, stop_iteration_frequency))
         calculated_data = self.run_isoeff()
@@ -1190,38 +1190,6 @@ class Experiment (object):
             if os.getenv('DISPLAY') is not None:
                 draw_graphs('results.txt')
 
-class GaussInputError (Exception):
-    def __str__(self):
-        return 'Gauss file is not in the correct format'
-
-class ConstantInputError (Exception):
-    def __str__(self):
-        return 'Constant input file is not in the correct format'
-
-class GnotAvailable (Exception):
-    def __str__(self):
-        return 'Gaussian error, make sure Gaussian is setup'
-
-class GnewlineError (Exception):
-    def __str__(self):
-        return 'Gaussian error, make sure input files are in unix format'
-
-class GTimeoutError (Exception):
-    def __str__(self):
-        return 'Gaussian error, try adjusting distances in the constant distances file or increasing MaxCycle'
-        
-class IsoeffError (Exception):
-    def __str__(self):
-        return 'Isoeff did not complete as expected, check isoeff file'
-
-class MissingFileError (Exception):
-    def __str__(self):
-        return "Check kind1 and kind2. You do not have both a transition state and substrate."
-
-class Abortion (Exception):
-    def __str__(self):
-        return "User aborted calculations"
-                
         
 ##test = Experiment('Methylchloride_Substrate.gjf.txt', ['1 5 2.5 F'], 'file2', ['hiagain'], 'isofile', [1.0, 2.0, 3.0])
 ##test.gauss_view_conversion('Methylchloride_Substrate.gjf.txt', ['1 5 2.5 F'], 'TS')
